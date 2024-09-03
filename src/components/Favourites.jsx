@@ -1,10 +1,12 @@
 import { Button, Col, Container, ListGroup, Row } from "react-bootstrap";
 import { useSelector, useDispatch } from "react-redux";
 import { Link } from "react-router-dom";
+import { removeFromFavouritesAction } from "../redux/antions";
 
 const Favourites = () => {
-  const arrayOfCompany = useSelector((store) => store.job.content);
+  const arrayOfCompany = useSelector((store) => store.content);
   const dispatch = useDispatch();
+  console.log("ciao", arrayOfCompany);
   return (
     <Container>
       <Row>
@@ -17,10 +19,7 @@ const Favourites = () => {
                 <Col>
                   <Button
                     onClick={() => {
-                      dispatch({
-                        type: "REMOVE_FROM_FAVOURITES",
-                        payload: i,
-                      });
+                      dispatch(removeFromFavouritesAction(i));
                     }}
                   >
                     rimuovi

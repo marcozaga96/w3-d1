@@ -1,6 +1,7 @@
 import { Row, Col, Button } from "react-bootstrap";
 import { useDispatch } from "react-redux";
 import { Link } from "react-router-dom";
+import { addToFavouritesAction } from "../redux/antions";
 
 const Job = ({ data }) => {
   const dispatch = useDispatch();
@@ -16,10 +17,7 @@ const Job = ({ data }) => {
         <Button
           onClick={() => {
             console.log("aggiutno");
-            dispatch({
-              type: "ADD-TO-FAVOURITES",
-              payload: data.company_name,
-            });
+            dispatch(addToFavouritesAction(data));
           }}
         >
           aggiungi ai preferiti
